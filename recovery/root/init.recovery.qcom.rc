@@ -26,12 +26,14 @@
 #
 
 import /init.recovery.qcom_decrypt.rc
+import /init.recovery.display.rc
 
 on early-init
     start linkblobs
 
 on init
     setprop prepdecrypt.setpatch true
+    write /sys/class/backlight/panel0-backlight/brightness 200
 
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
