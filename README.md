@@ -4,8 +4,9 @@ The Galaxy A23 5G (codenamed _"a23xq"_) is an upper-mid-range smartphone from Sa
 
 ## Kernel source 
 Known bugs:
-Touch still not working
+you tell me?
 
+touch works
 ADB / MTP works
 
 
@@ -29,7 +30,7 @@ git clone https://github.com/edward0181/android_device_samsung_a23xq.git -b andr
 ```bash
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
-lunch twrp_a52sxq-eng
+lunch twrp_a23xq-eng
 mka recoveryimage
 ```
 
