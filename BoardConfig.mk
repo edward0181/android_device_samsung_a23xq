@@ -119,7 +119,7 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/recovery.fstab
 RECOVERY_SDCARD_ON_DATA := true
 
 # Kernel module loading for touch, battery etc
-#TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/lib/modules)\")
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
 #TW_LOAD_VENDOR_MODULES := "novatek_ts_nt36523.ko sec_cmd.ko sec_common_fn.ko sec_secure_touch.ko sec_tsp_log.ko"
 TW_LOAD_VENDOR_BOOT_MODULES := true
 #TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
