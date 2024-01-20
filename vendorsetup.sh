@@ -4,5 +4,4 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-chmod a+x device/samsung/a23xq/mkbootimg
 add_lunch_combo twrp_a23xq-eng
