@@ -1,46 +1,34 @@
 #
-#	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2021-2023 The OrangeFox Recovery Project
+# Copyright (C) 2023 The OrangeFox Recovery Project
 #
-#	OrangeFox is free software: you can redistribute it and/or modify
-#	it under the terms of the GNU General Public License as published by
-#	the Free Software Foundation, either version 3 of the License, or
-#	any later version.
+# SPDX-License-Identifier: Apache-2.0
 #
-#	OrangeFox is distributed in the hope that it will be useful,
-#	but WITHOUT ANY WARRANTY; without even the implied warranty of
-#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#	GNU General Public License for more details.
-#
-# 	This software is released under GPL version 3 or any later version.
-#	See <http://www.gnu.org/licenses/>.
-#
-# 	Please maintain this if you use this script or any part of it
-#
+
 FDEVICE="a23xq"
 
 fox_get_target_device() {
-local chkdev=$(echo "$BASH_SOURCE" | grep -w \"$FDEVICE\")
-   if [ -n "$chkdev" ]; then 
-      FOX_BUILD_DEVICE="$FDEVICE"
-   else
-      chkdev=$(set | grep BASH_ARGV | grep -w \"$FDEVICE\")
-      [ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
-   fi
+local chkdev=$(echo "$BASH_SOURCE" | grep -w $FDEVICE)
+	if [ -n "$chkdev" ]; then
+		FOX_BUILD_DEVICE="$FDEVICE"
+	else
+		chkdev=$(set | grep BASH_ARGV | grep -w $FDEVICE)
+		[ -n "$chkdev" ] && FOX_BUILD_DEVICE="$FDEVICE"
+	fi
 }
 
 if [ -z "$1" -a -z "$FOX_BUILD_DEVICE" ]; then
-   fox_get_target_device
+	fox_get_target_device
 fi
 
 if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
+	export TW_DEFAULT_LANGUAGE="en"
+	export LC_ALL="C"
+	export ALLOW_MISSING_DEPENDENCIES=true
+
 	export OF_USE_GREEN_LED=0
 	export FOX_USE_NANO_EDITOR=1
 	export FOX_ENABLE_APP_MANAGER=1
 	export OF_IGNORE_LOGICAL_MOUNT_ERRORS=1
-   	export TW_DEFAULT_LANGUAGE="en"
-	export LC_ALL="C"
- 	export ALLOW_MISSING_DEPENDENCIES=true
 	export FOX_RECOVERY_SYSTEM_PARTITION="/dev/block/mapper/system"
 	export FOX_RECOVERY_VENDOR_PARTITION="/dev/block/mapper/vendor"
 	export OF_USE_MAGISKBOOT_FOR_ALL_PATCHES=1
@@ -58,22 +46,49 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_DELETE_AROMAFM=1
         export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 
-        # OTA
-        export OF_KEEP_DM_VERITY=1
-        export OF_SUPPORT_ALL_BLOCK_OTA_UPDATES=1
-        export OF_FIX_OTA_UPDATE_MANUAL_FLASH_ERROR=1
-        export OF_DISABLE_MIUI_OTA_BY_DEFAULT=1
+	# OTA
+        export OF_VANILLA_BUILD=1
 
 	# try to prevent potential data format errors
 	export OF_UNBIND_SDCARD_F2FS=1
 
-	# screen settings
-	export OF_SCREEN_H=2400
+	# R12.1 Settings
+	export FOX_VERSION="R12.1"
+
+	# Screen Settings
+	export OF_SCREEN_H=2408
 	export OF_STATUS_H=100
 	export OF_STATUS_INDENT_LEFT=48
 	export OF_STATUS_INDENT_RIGHT=48
-  	export OF_HIDE_NOTCH=1
 	export OF_CLOCK_POS=1
+	export OF_ALLOW_DISABLE_NAVBAR=0
+
+	# MediaTek
+	export FOX_RECOVERY_INSTALL_PARTITION="/dev/block/platform/bootdevice/by-name/recovery"
+	export FOX_RECOVERY_BOOT_PARTITION="/dev/block/platform/bootdevice/by-name/boot"
+
+	# Magisk
+	function download_magisk(){
+		# Usage: download_magisk <destination_path>
+		local DEST=$1
+		if [ -n "${DEST}" ]; then
+			if [ ! -e ${DEST} ]; then
+				echo "Downloading the Latest Release of Magisk..."
+				local LATEST_MAGISK_URL=$(curl -sL https://api.github.com/repos/topjohnwu/Magisk/releases/latest | grep browser_download_url | grep Magisk- | cut -d : -f 2,3 | tr -d '"')
+				mkdir -p $(dirname ${DEST})
+				wget -q ${LATEST_MAGISK_URL} -O ${DEST} || wget ${LATEST_MAGISK_URL} -O ${DEST}
+				local RCODE=$?
+				if [ "$RCODE" = "0" ]; then
+					echo "Successfully Downloaded Magisk to ${DEST}!"
+					echo "Done!"
+				else
+					echo "Failed to Download Magisk to ${DEST}!"
+				fi
+			fi
+		fi
+	}
+	export FOX_USE_SPECIFIC_MAGISK_ZIP=~/Magisk/Magisk.zip
+	download_magisk $FOX_USE_SPECIFIC_MAGISK_ZIP
 
 	# maximum permissible splash image size (in kilobytes); do *NOT* increase!
 	export OF_SPLASH_MAX_SIZE=130
@@ -90,4 +105,3 @@ else
 		echo "I: This script requires bash. Not processing the $FDEVICE $(basename $0)"
 	fi
 fi
-#
