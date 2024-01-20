@@ -46,8 +46,7 @@ if [ "$1" = "$FDEVICE" -o "$FOX_BUILD_DEVICE" = "$FDEVICE" ]; then
         export FOX_DELETE_AROMAFM=1
         export FOX_BUGGED_AOSP_ARB_WORKAROUND="1616300800"; # Sun 21 Mar 04:26:40 GMT 2021
 
-	# OTA
-        export OF_VANILLA_BUILD=1
+
 
 	# try to prevent potential data format errors
 	export OF_UNBIND_SDCARD_F2FS=1
