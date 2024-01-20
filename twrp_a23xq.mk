@@ -36,7 +36,7 @@ PRODUCT_COPY_FILES += $(call find-copy-subdir-files,*,device/samsung/a23xq/recov
 DEVICE_PATH := device/samsung/a23xq
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := twrp_a23xq
+PRODUCT_NAME := omni_a23xq
 PRODUCT_DEVICE := a23xq
 PRODUCT_MODEL := SM-A236B
 PRODUCT_BRAND := samsung
