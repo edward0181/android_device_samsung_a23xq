@@ -1,4 +1,4 @@
-# TWRP Device Tree for Samsung Galaxy A23 5G
+# OFRP Device Tree for Samsung Galaxy A23 5G
 
 The Galaxy A23 5G (codenamed _"a23xq"_) is an upper-mid-range smartphone from Samsung.
 
