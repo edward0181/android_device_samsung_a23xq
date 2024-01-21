@@ -4,6 +4,5 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-
+add_lunch_combo twrp_a23xq-eng
 # For building with minimal manifest
-export ALLOW_MISSING_DEPENDENCIES=true
