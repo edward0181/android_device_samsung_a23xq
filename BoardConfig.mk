@@ -130,6 +130,7 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_USES_MKE2FS := true
 
 # TWRP specific build flags
+TW_DEVICE_VERSION := -Edward0181-stable
 TW_THEME := portrait_hdpi
 #TW_SCREEN_BLANK_ON_BOOT := true
 # TW_NO_SCREEN_TIMEOUT := true
