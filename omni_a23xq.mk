@@ -24,7 +24,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
-# Inherit some common TWRP stuff.
+# Inherit from our custom product configuration
 $(call inherit-product, vendor/pb/config/common.mk)
 
 # Inherit device configuration
