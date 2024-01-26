@@ -131,6 +131,7 @@ TARGET_USES_MKE2FS := true
 
 # TWRP specific build flags
 TW_THEME := portrait_hdpi
+TW_DEVICE_VERSION := 1_A23XQ
 #TW_SCREEN_BLANK_ON_BOOT := true
 # TW_NO_SCREEN_TIMEOUT := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
