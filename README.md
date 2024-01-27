@@ -34,6 +34,10 @@ lunch twrp_a23xq-eng
 mka recoveryimage
 ```
 
+A big thanks to @Blackmesa123 and @Simon1511
+for their work on A52sxq, which this tree is heavily based on. 
+
+
 ## Copyright
 
 ```
