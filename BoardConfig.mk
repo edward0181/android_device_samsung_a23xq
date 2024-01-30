@@ -155,6 +155,4 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_LOGD := true
 
-#PB Torch
-PB_TORCH_PATH := "/sys/class/camera/flash/rear_flash"
-PB_TORCH_MAX_BRIGHTNESS := 1
+PB_TORCH_PATH := "/sys/class/leds/led:torch_0"
