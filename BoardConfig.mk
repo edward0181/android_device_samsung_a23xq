@@ -156,5 +156,5 @@ TARGET_USES_LOGD := true
 TARGET_USES_LOGD := true
 
 #PB Torch
-PB_TORCH_PATH := "/sys/devices/virtual/camera/flash/rear_flash"
+PB_TORCH_PATH := "/sys/devices/platform/sox/4784000.sdhci/leds/mmc1::"
 PB_TORCH_MAX_BRIGHTNESS := 1
