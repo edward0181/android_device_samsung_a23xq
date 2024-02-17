@@ -1,4 +1,4 @@
-# PBRP Device Tree for Samsung Galaxy A23xq 5G
+# TWRP Device Tree for Samsung Galaxy A23xq 5G
 
 The Galaxy A23 5G (codenamed _"a23xq"_) is an upper-mid-range smartphone from Samsung.
 
@@ -38,14 +38,14 @@ Available at [https://github.com/edward0181/android_kernel_samsung_a23xq](https:
 
 ## How to build
 
-This device tree was tested and is fully compatible with [minimal-manifest-PBRP](https://github.com/PitchBlackRecoveryProject/manifest_pb).
+This device tree was tested and is fully compatible with [minimal-manifest-twrp](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp).
 
-1. Set up the build environment following the instructions [here](https://github.com/PitchBlackRecoveryProject/manifest_pb)
+1. Set up the build environment following the instructions [here](https://github.com/minimal-manifest-twrp/platform_manifest_twrp_aosp/blob/twrp-12.1/README.md#getting-started)
 
 2. In the root folder of the fetched repo, clone the device tree:
 
 ```bash
-git clone https://github.com/edward0181/android_device_samsung_a23xq -b PBRP device/samsung/a23xq
+git clone https://github.com/edward0181/android_device_samsung_a23xq -b android-12.1 device/samsung/a23xq
 ```
 
 3. To build:
@@ -53,7 +53,7 @@ git clone https://github.com/edward0181/android_device_samsung_a23xq -b PBRP dev
 ```bash
 export ALLOW_MISSING_DEPENDENCIES=true
 . build/envsetup.sh
-lunch omni_a23xq-eng
+lunch twrp_a23xq-eng
 mka recoveryimage
 ```
 ## Thanks to

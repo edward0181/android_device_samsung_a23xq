@@ -120,7 +120,7 @@ RECOVERY_SDCARD_ON_DATA := true
 
 # Kernel module loading for touch, battery etc
 #TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/prebuilt/modules)\")
-TW_LOAD_VENDOR_MODULES := "novatek_ts_nt36523.ko sec_cmd.ko sec_common_fn.ko sec_secure_touch.ko sec_tsp_dumpkey.ko sec_tsp_log.ko lxs_ts.ko ovt_td4150_spi.ko"
+TW_LOAD_VENDOR_MODULES := "novatek_ts_nt36523.ko sec_cmd.ko sec_common_fn.ko sec_secure_touch.ko sec_tsp_dumpkey.ko sec_tsp_log.ko lxs_ts.ko ovt_td4150_spi.ko camera.ko"
 TW_LOAD_VENDOR_BOOT_MODULES := true
 TW_LOAD_VENDOR_MODULES_EXCLUDE_GKI := true
 
@@ -130,8 +130,10 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_USES_MKE2FS := true
 
 # TWRP specific build flags
-TW_DEVICE_VERSION := -Edward0181-stable
 TW_THEME := portrait_hdpi
+TW_DEVICE_VERSION := Edward0181-stable
+#TW_SCREEN_BLANK_ON_BOOT := true
+# TW_NO_SCREEN_TIMEOUT := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 TW_BRIGHTNESS_PATH := "/sys/class/backlight/panel0-backlight/brightness"
@@ -149,10 +151,11 @@ TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
 
+PB_TORCH_PATH := "/sys/devices/virtual/camera/flash/rear_flash"
+PB_TORCH_MAX_BRIGHTNESS := 1
+
 # TWRP Configuration: Logd
 TWRP_EVENT_LOGGING := true
 TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 TARGET_USES_LOGD := true
-
-PB_TORCH_PATH := "/sys/class/leds/led:torch_0"

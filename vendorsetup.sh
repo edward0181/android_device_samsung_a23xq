@@ -7,4 +7,3 @@
 
 # For building with minimal manifest
 export ALLOW_MISSING_DEPENDENCIES=true
-add_lunch_combo omni_a23xq-eng

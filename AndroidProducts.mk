@@ -6,7 +6,7 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_a23xq.mk
+    $(LOCAL_DIR)/pb_a23xq.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_a23xq-eng
+    pb_a23xq-eng
